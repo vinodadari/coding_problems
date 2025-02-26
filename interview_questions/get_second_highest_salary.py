@@ -77,3 +77,18 @@ Explanation:
 Note: Depending on your database platform and preferences, you can use alternative methods to achieve the same results. For example, some platforms offer window functions like ROW_NUMBER or DENSE_RANK to directly identify the employees within each department by rank.
 
 """
+"""
+Employee (efname, elname, salary, FK : dept_id)
+Department (dept_name, PK : dept_id)
+10 Departments
+1000 employees
+for every dept
+fetch employee where their salary is second highest from every department
+
+
+select
+    e.efname, e.salary from Employee e
+    left join Department d on e.dept_id=d.dept_id
+    where e.salary in ( select max(e2.salary) as second_highest)
+
+"""
